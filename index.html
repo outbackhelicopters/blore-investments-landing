@@ -40,7 +40,7 @@
   .nav-cta{display:flex;gap:12px;align-items:center;}
   @media(max-width:760px){.nav-links{display:none;}}
 
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:9px;font-weight:700;font-size:14.5px;cursor:pointer;border:1px solid transparent;transition:transform .12s ease, box-shadow .12s ease;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 22px;border-radius:9px;font-weight:700;font-size:14.5px;font-family:inherit;cursor:pointer;border:1px solid transparent;transition:transform .12s ease, box-shadow .12s ease;}
   .btn:hover{transform:translateY(-1px);}
   .btn-primary{background:var(--sky);color:#fff;box-shadow:0 6px 16px rgba(30,136,229,0.28);}
   .btn-primary:hover{box-shadow:0 10px 22px rgba(30,136,229,0.36);}
@@ -170,6 +170,16 @@
   .lf-fine{margin-top:14px;font-size:12.5px;color:var(--muted);text-align:center;}
   .lf-fine a{color:var(--sky);font-weight:700;}
 
+  /* DEMO GATE MODAL */
+  .modal-overlay{position:fixed;inset:0;background:rgba(11,27,51,0.55);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;}
+  .modal-card{position:relative;background:#fff;border-radius:18px;padding:36px;max-width:440px;width:100%;box-shadow:0 30px 60px rgba(11,27,51,0.3);}
+  .modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;font-size:14px;font-family:inherit;}
+  .modal-close:hover{color:var(--navy);border-color:var(--sky);}
+  .modal-kicker{font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--sky);margin-bottom:10px;}
+  .modal-card h3{font-size:21px;font-weight:800;color:var(--navy);margin-bottom:8px;line-height:1.25;}
+  .modal-card > div > p{font-size:14px;color:var(--muted);margin-bottom:20px;}
+  .modal-confirm-ico{width:48px;height:48px;border-radius:50%;background:#E6F7EE;color:#16A34A;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;margin:0 auto 16px;}
+
   /* FOOTER */
   footer{background:var(--navy);color:#B9C6D9;padding:56px 0 32px;}
   .footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,0.1);}
@@ -203,7 +213,7 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-ghost" href="https://seal-app-c26sv.ondigitalocean.app/" target="_blank" rel="noopener">See a live example</a>
+      <button type="button" class="btn btn-ghost" onclick="openDemoGate()">See a live example</button>
       <a class="btn btn-primary" href="mailto:hello@bloreinvestments.co?subject=AI%20automation%20enquiry">Book a call</a>
     </div>
   </div>
@@ -216,7 +226,7 @@
       <h1>We build the software your industry hasn't built yet.</h1>
       <p class="sub">Blore Investments designs AI-powered automation and streamlined operational systems for businesses still running on paperwork, spreadsheets and manual handoffs. Purpose-built for how your team actually works, not a generic template you have to bend around.</p>
       <div class="hero-ctas">
-        <a class="btn btn-primary btn-lg" href="https://seal-app-c26sv.ondigitalocean.app/" target="_blank" rel="noopener">See a live example →</a>
+        <button type="button" class="btn btn-primary btn-lg" onclick="openDemoGate()">See a live example →</button>
         <a class="btn btn-ghost btn-lg" href="mailto:hello@bloreinvestments.co?subject=AI%20automation%20enquiry">Book a call</a>
       </div>
       <p class="hero-note">The example below, SkyForms, is a system we built for a helicopter operator. It shows the kind of automation we build, adapted to whatever your industry looks like.</p>
@@ -355,7 +365,7 @@
     <h2>SkyForms: built for helicopter flight operations</h2>
     <p>This is a real build. SkyForms replaced paper job sheets, safety forms and weight and balance sign-off for a helicopter operator with a fully digital system. Explore the live demo below, seeded with a full season of flights for a fictional operator, so you can click through exactly as a pilot or office admin would.</p>
     <div class="demo-ctas">
-      <a class="btn btn-primary btn-lg" href="https://seal-app-c26sv.ondigitalocean.app/" target="_blank" rel="noopener">Open the live demo →</a>
+      <button type="button" class="btn btn-primary btn-lg" onclick="openDemoGate()">Open the live demo →</button>
       <a class="btn btn-ghost btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.25);" href="mailto:hello@bloreinvestments.co?subject=AI%20automation%20enquiry">Talk to us about your industry</a>
     </div>
     <p class="demo-fineprint">seal-app-c26sv.ondigitalocean.app. All names, aircraft and data on the demo are fictional. SkyForms is a paperwork and workflow tool. It doesn't replace an operator's obligations under CASA or workplace safety regulations, responsibility for regulatory compliance stays with your organisation.</p>
@@ -474,12 +484,76 @@
     <div class="footer-bottom">
       <div>© 2026 Blore Investments Pty Ltd, ACN 699 043 064. Demo data shown is fictional.</div>
       <div>This site doesn't store form submissions or use tracking cookies.</div>
-      <div><a href="https://seal-app-c26sv.ondigitalocean.app/" target="_blank" rel="noopener">Live demo →</a></div>
+      <div><button type="button" onclick="openDemoGate()" style="background:none;border:none;padding:0;font:inherit;color:inherit;cursor:pointer;">Live demo →</button></div>
     </div>
   </div>
 </footer>
 
+<div id="demoGateOverlay" class="modal-overlay" style="display:none;" onclick="if(event.target===this){closeDemoGate();}">
+  <div class="modal-card">
+    <button type="button" class="modal-close" onclick="closeDemoGate()" aria-label="Close">✕</button>
+    <div id="demoGateForm">
+      <div class="modal-kicker">Live demo access</div>
+      <h3>Quick details before you dive in</h3>
+      <p>Takes ten seconds. The demo opens right away, we'll only follow up if you want to talk it through.</p>
+      <form onsubmit="return submitDemoGate(event)">
+        <div class="lf-field">
+          <label class="lf-label" for="dg-name">Name</label>
+          <input required type="text" id="dg-name" class="lf-input">
+        </div>
+        <div class="lf-field">
+          <label class="lf-label" for="dg-email">Email</label>
+          <input required type="email" id="dg-email" class="lf-input">
+        </div>
+        <div class="lf-field">
+          <label class="lf-label" for="dg-company">Company (optional)</label>
+          <input type="text" id="dg-company" class="lf-input">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">View the live demo →</button>
+        <p class="lf-fine">Opens the demo in a new tab and lets us know by email so we can follow up. Nothing is stored by this site, and we won't add you to a mailing list without asking first.</p>
+      </form>
+    </div>
+    <div id="demoGateConfirm" style="display:none;text-align:center;">
+      <div class="modal-confirm-ico">✓</div>
+      <h3>Opening the demo now</h3>
+      <p>If it didn't open in a new tab, use the link below. We'll be in touch if you want to talk it through.</p>
+      <a class="btn btn-primary btn-lg" href="https://seal-app-c26sv.ondigitalocean.app/" target="_blank" rel="noopener" style="width:100%;">Open the demo →</a>
+    </div>
+  </div>
+</div>
+
 <script>
+var DEMO_URL = 'https://seal-app-c26sv.ondigitalocean.app/';
+
+function openDemoGate(){
+  document.getElementById('demoGateForm').style.display = 'block';
+  document.getElementById('demoGateConfirm').style.display = 'none';
+  document.getElementById('demoGateOverlay').style.display = 'flex';
+  document.getElementById('dg-name').focus();
+}
+function closeDemoGate(){
+  document.getElementById('demoGateOverlay').style.display = 'none';
+}
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeDemoGate();
+});
+function submitDemoGate(e){
+  e.preventDefault();
+  var name = document.getElementById('dg-name').value;
+  var email = document.getElementById('dg-email').value;
+  var company = document.getElementById('dg-company').value;
+  var subject = 'Demo access request from ' + name + (company ? (' at ' + company) : '');
+  var body = 'Name: ' + name + '\n' +
+             'Email: ' + email + '\n' +
+             'Company: ' + company + '\n\n' +
+             'Requested access to the SkyForms live demo from the website.';
+  window.open(DEMO_URL, '_blank', 'noopener');
+  window.location.href = 'mailto:hello@bloreinvestments.co?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  document.getElementById('demoGateForm').style.display = 'none';
+  document.getElementById('demoGateConfirm').style.display = 'block';
+  return false;
+}
+
 function sendLead(e){
   e.preventDefault();
   var name = document.getElementById('lf-name').value;
