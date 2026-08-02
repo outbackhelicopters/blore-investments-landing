@@ -92,6 +92,14 @@
   .shot-card figcaption{padding:14px 16px;font-size:13.5px;color:var(--muted);}
   .shot-card figcaption strong{color:var(--navy);display:block;margin-bottom:4px;font-size:14px;}
 
+  /* SCREENS GATE */
+  .shots-locked-wrap{position:relative;}
+  .shots-lock-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(246,248,251,0.15), rgba(246,248,251,0.9));border-radius:18px;padding:20px;}
+  .shots-lock-card{text-align:center;background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px 36px;box-shadow:0 20px 40px rgba(11,27,51,0.14);max-width:320px;}
+  .lock-ico{width:48px;height:48px;border-radius:50%;background:#EEF3F9;color:var(--sky);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 14px;}
+  .shots-lock-card h3{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:8px;}
+  .shots-lock-card p{font-size:13.5px;color:var(--muted);margin-bottom:18px;}
+
   /* SECTION SHARED */
   section{padding:88px 0;}
   .section-head{max-width:640px;margin:0 auto 52px;text-align:center;}
@@ -377,33 +385,43 @@
     <div class="section-head">
       <div class="kicker">Real screens</div>
       <h2>Straight from the live demo, not a mockup</h2>
-      <p>Every screenshot below is the actual SkyForms app, taken from the same demo you can click through yourself above.</p>
+      <p>Every screenshot below is the actual SkyForms app, taken from the same demo you can click through yourself above. Pop in your details once and both unlock.</p>
     </div>
-    <div class="shot-grid">
-      <figure class="shot-card">
-        <img src="images/shot-pilot-home.jpg" alt="SkyForms pilot home screen on iPad">
-        <figcaption><strong>Pilot home screen.</strong> Job sheets, safety forms and settings, one tap away in the field.</figcaption>
-      </figure>
-      <figure class="shot-card">
-        <img src="images/shot-swms-form.jpg" alt="Digital safety form sign-on screen">
-        <figcaption><strong>Safety form, filled in the field.</strong> Structured sign-on and risk sections, not a blank text box.</figcaption>
-      </figure>
-      <figure class="shot-card">
-        <img src="images/shot-wb-signoff.jpg" alt="Weight and balance sign-off screen with audit trail">
-        <figcaption><strong>Sign-off with an audit trail.</strong> Verified against the aircraft manual, name and date recorded, locked until re-checked.</figcaption>
-      </figure>
-      <figure class="shot-card">
-        <img src="images/shot-office-today.jpg" alt="Office dashboard showing today's jobs and paperwork status">
-        <figcaption><strong>One dashboard for the office.</strong> What's scheduled and what's still missing paperwork, at a glance.</figcaption>
-      </figure>
-      <figure class="shot-card">
-        <img src="images/shot-paperwork.jpg" alt="Filed paperwork table with flight, pilot and client records">
-        <figcaption><strong>Every record, filed and searchable.</strong> No more digging through folders for last month's job sheet.</figcaption>
-      </figure>
-      <figure class="shot-card">
-        <img src="images/shot-pdf.jpg" alt="Automatically generated PDF flight paperwork document">
-        <figcaption><strong>A finished document, generated automatically.</strong> Branded letterhead, filled in and ready the moment the form is submitted.</figcaption>
-      </figure>
+    <div class="shots-locked-wrap" id="shotsLockWrap">
+      <div class="shot-grid" id="shotsGrid" style="filter:blur(16px);pointer-events:none;user-select:none;">
+        <figure class="shot-card">
+          <img src="images/shot-pilot-home.jpg" alt="SkyForms pilot home screen on iPad">
+          <figcaption><strong>Pilot home screen.</strong> Job sheets, safety forms and settings, one tap away in the field.</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <img src="images/shot-swms-form.jpg" alt="Digital safety form sign-on screen">
+          <figcaption><strong>Safety form, filled in the field.</strong> Structured sign-on and risk sections, not a blank text box.</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <img src="images/shot-wb-signoff.jpg" alt="Weight and balance sign-off screen with audit trail">
+          <figcaption><strong>Sign-off with an audit trail.</strong> Verified against the aircraft manual, name and date recorded, locked until re-checked.</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <img src="images/shot-office-today.jpg" alt="Office dashboard showing today's jobs and paperwork status">
+          <figcaption><strong>One dashboard for the office.</strong> What's scheduled and what's still missing paperwork, at a glance.</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <img src="images/shot-paperwork.jpg" alt="Filed paperwork table with flight, pilot and client records">
+          <figcaption><strong>Every record, filed and searchable.</strong> No more digging through folders for last month's job sheet.</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <img src="images/shot-pdf.jpg" alt="Automatically generated PDF flight paperwork document">
+          <figcaption><strong>A finished document, generated automatically.</strong> Branded letterhead, filled in and ready the moment the form is submitted.</figcaption>
+        </figure>
+      </div>
+      <div class="shots-lock-overlay" id="shotsLockOverlay">
+        <div class="shots-lock-card">
+          <div class="lock-ico">🔒</div>
+          <h3>Unlock the real screens</h3>
+          <p>Same quick details as the live demo. Ten seconds, and both unlock together.</p>
+          <button type="button" class="btn btn-primary btn-lg" onclick="openDemoGate()">Unlock screens →</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -495,7 +513,7 @@
     <div id="demoGateForm">
       <div class="modal-kicker">Live demo access</div>
       <h3>Quick details before you dive in</h3>
-      <p>Takes ten seconds. The demo opens right away, we'll only follow up if you want to talk it through.</p>
+      <p>Takes ten seconds. The demo opens right away and the real screenshots on the page unlock too, we'll only follow up if you want to talk it through.</p>
       <form onsubmit="return submitDemoGate(event)">
         <div class="lf-field">
           <label class="lf-label" for="dg-name">Name</label>
@@ -516,7 +534,7 @@
     <div id="demoGateConfirm" style="display:none;text-align:center;">
       <div class="modal-confirm-ico">✓</div>
       <h3>Opening the demo now</h3>
-      <p>If it didn't open in a new tab, use the link below. We'll be in touch if you want to talk it through.</p>
+      <p>If it didn't open in a new tab, use the link below. The real screenshots on this page are unlocked too. We'll be in touch if you want to talk it through.</p>
       <a class="btn btn-primary btn-lg" href="https://seal-app-c26sv.ondigitalocean.app/" target="_blank" rel="noopener" style="width:100%;">Open the demo →</a>
     </div>
   </div>
@@ -537,6 +555,12 @@ function closeDemoGate(){
 document.addEventListener('keydown', function(e){
   if(e.key === 'Escape') closeDemoGate();
 });
+function unlockScreens(){
+  var grid = document.getElementById('shotsGrid');
+  var overlay = document.getElementById('shotsLockOverlay');
+  if(grid){ grid.style.filter = ''; grid.style.pointerEvents = ''; grid.style.userSelect = ''; }
+  if(overlay){ overlay.style.display = 'none'; }
+}
 function submitDemoGate(e){
   e.preventDefault();
   var name = document.getElementById('dg-name').value;
@@ -546,9 +570,10 @@ function submitDemoGate(e){
   var body = 'Name: ' + name + '\n' +
              'Email: ' + email + '\n' +
              'Company: ' + company + '\n\n' +
-             'Requested access to the SkyForms live demo from the website.';
+             'Requested access to the SkyForms live demo and real screenshots from the website.';
   window.open(DEMO_URL, '_blank', 'noopener');
   window.location.href = 'mailto:hello@bloreinvestments.co?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  unlockScreens();
   document.getElementById('demoGateForm').style.display = 'none';
   document.getElementById('demoGateConfirm').style.display = 'block';
   return false;
