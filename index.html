@@ -83,6 +83,15 @@
   .fc2 .ico{background:#E6F7EE;color:#16A34A;}
   @media(max-width:900px){.float-card{display:none;}}
 
+  /* REAL SCREENS GALLERY */
+  .shot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media(max-width:900px){.shot-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:620px){.shot-grid{grid-template-columns:1fr;}}
+  .shot-card{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 10px 24px rgba(11,27,51,0.06);}
+  .shot-card img{width:100%;display:block;border-bottom:1px solid var(--border);}
+  .shot-card figcaption{padding:14px 16px;font-size:13.5px;color:var(--muted);}
+  .shot-card figcaption strong{color:var(--navy);display:block;margin-bottom:4px;font-size:14px;}
+
   /* SECTION SHARED */
   section{padding:88px 0;}
   .section-head{max-width:640px;margin:0 auto 52px;text-align:center;}
@@ -190,6 +199,7 @@
       <a href="#capabilities">Capabilities</a>
       <a href="#how-it-works">How it works</a>
       <a href="#demo">Case study</a>
+      <a href="#screens">Screens</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-cta">
@@ -214,35 +224,7 @@
     <div class="hero-visual">
       <div class="device">
         <div class="screen">
-          <div class="screen-bar">
-            <div class="brand">
-              <svg width="16" height="16" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#0B1B33"/><rect x="9" y="8" width="5" height="16" rx="1.5" fill="#1E88E5"/><path d="M14 8h5.5a4 4 0 010 8H14V8z" fill="#1E88E5"/><path d="M14 16h6a4.5 4.5 0 010 9H14v-9z" fill="#5FB3F5"/></svg>
-              Job Sheet: VH-XXX
-            </div>
-            <div class="status">● Synced</div>
-          </div>
-          <div class="screen-body">
-            <div class="form-row">
-              <div class="lbl">Pilot in command</div>
-              <div class="val">S. Carter, ARN 118842</div>
-            </div>
-            <div class="form-row">
-              <div class="lbl">Sector</div>
-              <div class="val">Muster run, Curtin Springs</div>
-            </div>
-            <div class="form-row">
-              <div class="lbl">Weight & balance</div>
-              <div class="val">Within limits ✓ Signed off</div>
-              <div class="bar" style="margin-top:8px;"><span style="width:78%;"></span></div>
-            </div>
-            <div class="sig-line">✎ Signature captured</div>
-            <div class="pill-row">
-              <span class="pill">Safety form attached</span>
-              <span class="pill">PDF ready</span>
-              <span class="pill">SMS sent</span>
-              <span class="pill">Offline-safe</span>
-            </div>
-          </div>
+          <img src="images/hero-wb.jpg" alt="SkyForms weight and balance screen, taken from the live demo" style="width:100%;display:block;">
         </div>
       </div>
       <div class="float-card fc1">
@@ -380,33 +362,57 @@
   </div>
 </section>
 
+<section id="screens">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Real screens</div>
+      <h2>Straight from the live demo, not a mockup</h2>
+      <p>Every screenshot below is the actual SkyForms app, taken from the same demo you can click through yourself above.</p>
+    </div>
+    <div class="shot-grid">
+      <figure class="shot-card">
+        <img src="images/shot-pilot-home.jpg" alt="SkyForms pilot home screen on iPad">
+        <figcaption><strong>Pilot home screen.</strong> Job sheets, safety forms and settings, one tap away in the field.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="images/shot-swms-form.jpg" alt="Digital safety form sign-on screen">
+        <figcaption><strong>Safety form, filled in the field.</strong> Structured sign-on and risk sections, not a blank text box.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="images/shot-wb-signoff.jpg" alt="Weight and balance sign-off screen with audit trail">
+        <figcaption><strong>Sign-off with an audit trail.</strong> Verified against the aircraft manual, name and date recorded, locked until re-checked.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="images/shot-office-today.jpg" alt="Office dashboard showing today's jobs and paperwork status">
+        <figcaption><strong>One dashboard for the office.</strong> What's scheduled and what's still missing paperwork, at a glance.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="images/shot-paperwork.jpg" alt="Filed paperwork table with flight, pilot and client records">
+        <figcaption><strong>Every record, filed and searchable.</strong> No more digging through folders for last month's job sheet.</figcaption>
+      </figure>
+      <figure class="shot-card">
+        <img src="images/shot-pdf.jpg" alt="Automatically generated PDF flight paperwork document">
+        <figcaption><strong>A finished document, generated automatically.</strong> Branded letterhead, filled in and ready the moment the form is submitted.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="wl">
       <div class="wl-copy">
         <div class="kicker">Built for you</div>
         <h2>Your brand, your process, your system</h2>
-        <p>Every build we deliver is branded to you and shaped around your workflow, not the other way around. What you see in the SkyForms example (logo, colours, company name, document templates) is standard on every project we deliver, whatever industry you're in.</p>
+        <p>Every build we deliver is branded to you and shaped around your workflow, not the other way around. The screenshot beside this text is the real branding screen from the SkyForms admin console, and the same control is standard on every project we deliver, whatever industry you're in.</p>
         <ul class="wl-list">
           <li><span class="check">✓</span> Logo, brand colours and company name set from your own admin console</li>
           <li><span class="check">✓</span> Your own document templates and letterhead on everything the system produces</li>
           <li><span class="check">✓</span> A dedicated build. Your data never touches anyone else's</li>
         </ul>
       </div>
-      <div class="wl-visual">
-        <div class="brand-row">
-          <div style="font-weight:800;color:var(--navy);font-size:14px;">Branding: Admin Console</div>
-          <div class="swatches">
-            <div class="swatch" style="background:#1E88E5;"></div>
-            <div class="swatch" style="background:#F5A623;"></div>
-            <div class="swatch" style="background:#0B1B33;"></div>
-          </div>
-        </div>
-        <div class="op-row"><span class="op-name">Company name</span><span class="op-tag">Editable</span></div>
-        <div class="op-row"><span class="op-name">Logo upload</span><span class="op-tag">Editable</span></div>
-        <div class="op-row"><span class="op-name">Primary colour</span><span class="op-tag">Editable</span></div>
-        <div class="op-row"><span class="op-name">Document letterhead</span><span class="op-tag">Editable</span></div>
-        <div class="op-row"><span class="op-name">Team & roster data</span><span class="op-tag">Editable</span></div>
+      <div class="wl-visual" style="padding:0;overflow:hidden;">
+        <img src="images/shot-branding.jpg" alt="SkyForms branding settings screen from the live admin console" style="width:100%;display:block;">
       </div>
     </div>
   </div>
